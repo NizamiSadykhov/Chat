@@ -21,8 +21,8 @@ public class Server {
             System.out.println("Server is listening in " + PORT);
             while (true) {
                 Socket socket = serverSocket.accept();
-                System.out.println();
                 new ClientHandler(number.getAndIncrement(),this, socket);
+                System.out.println("Подключился новый клиент");
             }
         } catch (IOException e) {
             e.printStackTrace();
