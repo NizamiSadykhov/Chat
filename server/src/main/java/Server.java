@@ -35,6 +35,14 @@ public class Server {
         }
     }
 
+    public void sendForClient(String nickName, String message) {
+        for(ClientHandler client : mClients) {
+            if (client.getNickname().equals(nickName)){
+                client.sendMessage(message);
+            }
+        }
+    }
+
     public void broadcastClientsList() {
         StringBuilder sb = new StringBuilder(15 * mClients.size());
         sb.append("/clients ");

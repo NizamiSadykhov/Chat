@@ -56,6 +56,11 @@ public class ClientHandler {
                                 String password = tokens[2];
                                 mNickname = mServer.getAuthService()
                                         .getNicknameByLoginAndPassword(login, password);
+                            } else if (msg.startsWith("/w")){
+                                String[] tokens = msg.split(" ", 3);
+                                String name = tokens[1];
+                                String message = tokens[2];
+                                mServer.sendForClient(name, message);
                             }
                         } else {
                             server.broadcastMessage(mNickname + ": " + msg);
